@@ -27,3 +27,10 @@
 127.0.0.1 - - [17/Nov/2023:18:14:39 +0530] "GET / HTTP/1.1" 404 752
 0:0:0:0:0:0:0:1 - - [17/Nov/2023:18:14:40 +0530] "GET /web_app_demo_2_registration/index.html HTTP/1.1" 200 355
 0:0:0:0:0:0:0:1 - - [17/Nov/2023:18:20:44 +0530] "GET /web_app_demo_2_registration/index.html HTTP/1.1" 200 386
+127.0.0.1 - - [17/Nov/2023:18:23:28 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [17/Nov/2023:18:23:28 +0530] "GET /web_app_demo_2_registration/index.html HTTP/1.1" 200 405
+0:0:0:0:0:0:0:1 - - [17/Nov/2023:18:23:54 +0530] "GET /web_app_demo_2_registration/registrationServlet? HTTP/1.1" 200 -
+127.0.0.1 - - [17/Nov/2023:18:27:22 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [17/Nov/2023:18:27:23 +0530] "GET /web_app_demo_2_registration/index.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [17/Nov/2023:18:27:29 +0530] "GET /web_app_demo_2_registration/registrationServlet? HTTP/1.1" 200 -
+0:0:0:0:0:0:0:1 - - [17/Nov/2023:18:32:24 +0530] "GET /web_app_demo_2_registration/registrationServlet? HTTP/1.1" 200 -

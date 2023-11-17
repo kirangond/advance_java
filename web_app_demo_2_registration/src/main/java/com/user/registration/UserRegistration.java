@@ -19,6 +19,15 @@ public class UserRegistration extends HttpServlet {
 	//get method used to read data from form
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("do Get method executed: ");
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phone");
+		String city = request.getParameter("city");
+		String emailId = request.getParameter("emailId");
+		System.out.println("name: "+name);
+		System.out.println("phone: "+phone);
+		System.out.println("city: "+city);
+		System.out.println("emailId: "+emailId);
+		
 	}
 
 	//to write data into the form we use post method
