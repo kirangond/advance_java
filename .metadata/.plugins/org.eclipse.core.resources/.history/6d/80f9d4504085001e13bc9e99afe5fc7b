@@ -1,0 +1,34 @@
+
+
+Advance Java
+
+First session
+23/11/2020 
+Nov 17 2023
+
+
+why jdk?
+ - to run java programs
+ 
+why tomcat?
+ - to run web application 
+ 
+ 
+- Download the apache tomcat software
+ In server just try to copy the path where you downloaded in your system.
+ 
+ create a dynamic web project 
+  - html files should wtitten in webapp folder to load
+   
+   http://localhost:8080/web_app_demo_1/welcomePage.html
+   
+   
+  runs in browser - front end
+  java - back end 
+  
+ 
+  Servlet:
+   - It is java class, sub class of HttpServlet and used for back end application coding
+   - It will not have a main method, instead form will trigger to servlet class to execute further   
+ 
+ 
