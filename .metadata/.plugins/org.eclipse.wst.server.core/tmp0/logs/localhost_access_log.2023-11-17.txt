@@ -18,3 +18,12 @@
 0:0:0:0:0:0:0:1 - - [17/Nov/2023:17:24:12 +0530] "GET /web_app_demo_1/indexPageMapping? HTTP/1.1" 200 -
 127.0.0.1 - - [17/Nov/2023:17:24:39 +0530] "GET / HTTP/1.1" 404 752
 0:0:0:0:0:0:0:1 - - [17/Nov/2023:17:27:37 +0530] "GET /web_app_demo_1/indexPageMapping? HTTP/1.1" 200 -
+127.0.0.1 - - [17/Nov/2023:17:28:02 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [17/Nov/2023:17:28:02 +0530] "GET /web_app_demo_1/index.html HTTP/1.1" 200 223
+0:0:0:0:0:0:0:1 - - [17/Nov/2023:17:28:04 +0530] "POST /web_app_demo_1/indexPageMapping HTTP/1.1" 200 -
+127.0.0.1 - - [17/Nov/2023:18:08:11 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [17/Nov/2023:18:08:12 +0530] "GET /web_app_demo_2_registration/index.html HTTP/1.1" 200 359
+0:0:0:0:0:0:0:1 - - [17/Nov/2023:18:08:35 +0530] "GET /web_app_demo_2_registration/index.html? HTTP/1.1" 200 359
+127.0.0.1 - - [17/Nov/2023:18:14:39 +0530] "GET / HTTP/1.1" 404 752
+0:0:0:0:0:0:0:1 - - [17/Nov/2023:18:14:40 +0530] "GET /web_app_demo_2_registration/index.html HTTP/1.1" 200 355
+0:0:0:0:0:0:0:1 - - [17/Nov/2023:18:20:44 +0530] "GET /web_app_demo_2_registration/index.html HTTP/1.1" 200 386
