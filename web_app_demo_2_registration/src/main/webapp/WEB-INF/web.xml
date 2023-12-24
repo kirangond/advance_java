@@ -19,4 +19,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>EncryptingURLServlet</display-name>
+    <servlet-name>EncryptingURLServlet</servlet-name>
+    <servlet-class>com.user.registration.EncryptingURLServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EncryptingURLServlet</servlet-name>
+    <url-pattern>/EncryptingURLServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

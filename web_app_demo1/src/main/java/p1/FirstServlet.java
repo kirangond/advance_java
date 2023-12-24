@@ -1,4 +1,4 @@
-package com.servlet;
+package p1;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,24 +10,25 @@ import java.io.IOException;
 /**
  * Servlet implementation class FirstServlet
  */
-@WebServlet("/indexPageMapping")
+@WebServlet("/LinkToFrontend")
 public class FirstServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
+   
+    public FirstServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("do Get method executed: ");
+		// TODO Auto-generated method stub
+		System.out.println("executed get method: ");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("do Post method executed: ");
+		// TODO Auto-generated method stub
+		System.out.println("executed post method: ");
 	}
 
 }
