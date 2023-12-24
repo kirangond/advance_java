@@ -2,7 +2,7 @@
 
 Advance Java
 
-First session
+First session - a 
 23/11/2020 
 Nov 17 2023
 
@@ -18,7 +18,10 @@ why tomcat?
  In server just try to copy the path where you downloaded in your system.
  
  create a dynamic web project 
-  - html files should wtitten in webapp folder to load
+  - html files should written in webapp folder to load
+  
+  if we create .html file in sub directory of web app it won't work 
+   (HTTP Status 404 – Not Found)
    
    http://localhost:8080/web_app_demo_1/welcomePage.html
    
