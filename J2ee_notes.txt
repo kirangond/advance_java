@@ -16,6 +16,7 @@ why tomcat?
  
 - Download the apache tomcat software
  In server just try to copy the path where you downloaded in your system.
+ C:\apache-tomcat-10.0.17
  
  create a dynamic web project 
   - html files should written in webapp folder to load
@@ -86,4 +87,419 @@ public class FirstServlet extends HttpServlet {
 
 ---now run the html page on apache
  
- 	
+USER REGISTRATION:	
+
+index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>home page</title>
+</head>
+<body>
+    <form action="regitration" method="get">
+      Name : <input type="text" name="name">
+      City : <input type="text" name="city">
+      Mobile No : <input type="text" name="phone_no">
+      <input type="submit" value="register">
+     
+    </form>
+</body>
+</html>
+
+
+UserRegistration.java 
+
+package p1;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet("/regitration")
+public class UserRegistration extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("entered do get method: ");
+		
+		String name = request.getParameter("name");
+		System.out.println("name: "  + name);
+		
+		String city = request.getParameter("city");
+		System.out.println("city: "  + city);	
+		
+		String number = request.getParameter("phone_no");
+		System.out.println("number: "  + number);
+		
+		String dummy = request.getParameter("dummy");
+		System.out.println("dummy: "  + dummy);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("entered do post method: ");
+	}
+
+}
+
+-printing all the details from request parameter
+
+we need to connect with the DB:
+
+ create new db in mysql work bench 
+ web_app_demo2_registration - DB 
+
+create database user_registration;
+
+use user_registration;
+
+create table details(name varchar(10), city varchar(10), number int(10));
+
+select * from details;                                            
+
+first Session b                                                                                                                                                                  
+copy jar into lib folder 
+
+If we are not loading the driver, apache will not able to load we need load explicitly
+
+java.sql.SQLException: No suitable driver found for jdbc:mysql://localhost:3306/user_registration
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:706)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at p1.UserRegistration.doGet(UserRegistration.java:35)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:777)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:355)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:866)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1716)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+
+
+index.html---
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>home page</title>
+</head>
+<body>
+    <form action="regitration" method="get">
+      Name : <input type="text" name="name">
+      City : <input type="text" name="city">
+      Mobile No : <input type="text" name="phone_no">
+      <input type="submit" value="register">
+     
+    </form>
+</body>
+</html>
+
+
+--UserRegistration--
+package p1;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+@WebServlet("/regitration")
+public class UserRegistration extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("entered do get method: ");
+		
+		String name = request.getParameter("name");
+		System.out.println("name: "  + name);
+		
+		String city = request.getParameter("city");
+		System.out.println("city: "  + city);	
+		
+		String number = request.getParameter("phone_no");
+		System.out.println("number: "  + number);
+		
+		String dummy = request.getParameter("dummy");
+		System.out.println("dummy: "  + dummy);
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_registration", "root", "Kiran@123");
+		    Statement createStatement = connection.createStatement();
+		    createStatement.executeUpdate("insert into details values('"+name+"','"+city+"','"+number+"')");
+		    connection.close();
+		} catch (SQLException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("entered do post method: ");
+	}
+
+}
+
+o/p:
+
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server version name:   Apache Tomcat/10.0.17
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server built:          Feb 21 2022 19:36:49 UTC
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Server version number: 10.0.17.0
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Name:               Windows 10
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: OS Version:            10.0
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Architecture:          amd64
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Java Home:             C:\Program Files\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.1.v20211116-1657\jre
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Version:           17.0.1+12
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: JVM Vendor:            Eclipse Adoptium
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_BASE:         C:\advance_java_project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: CATALINA_HOME:         C:\apache-tomcat-10.0.17
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.base=C:\advance_java_project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dcatalina.home=C:\apache-tomcat-10.0.17
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dwtp.deploy=C:\advance_java_project\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: --add-opens=java.base/java.lang=ALL-UNNAMED
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: --add-opens=java.base/java.io=ALL-UNNAMED
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: --add-opens=java.base/java.util=ALL-UNNAMED
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -Dfile.encoding=Cp1252
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.VersionLoggerListener log
+INFO: Command line argument: -XX:+ShowCodeDetailsInExceptionMessages
+Dec 25, 2023 1:17:16 PM org.apache.catalina.core.AprLifecycleListener lifecycleEvent
+INFO: The Apache Tomcat Native library which allows using OpenSSL was not found on the java.library.path: [C:\Program Files\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.1.v20211116-1657\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Program Files/eclipse//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.1.v20211116-1657/jre/bin/server;C:/Program Files/eclipse//plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.1.v20211116-1657/jre/bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk-18\bin;C:\Program Files\Java\jdk1.8.0_321\bin;C:\Python39\Scripts\;C:\Python39\;C:\oracle\product\10.2.0\db_1\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Java\jdk-11.0.2\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\JDK1.6;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\gonda\AppData\Local\Programs\Python\Python38-32\Scripts\;C:\Users\gonda\AppData\Local\Programs\Python\Python38-32\;C:\Users\gonda\AppData\Local\Microsoft\WindowsApps;C:\MinGW\bin;C:\Users\gonda\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\gonda\AppData\Local\atom\bin;C:\Users\gonda\AppData\Local\Microsoft\WindowsApps;C:\Users\gonda\AppData\Roaming\npm;C:\Program Files\eclipse;;.]
+Dec 25, 2023 1:17:16 PM org.apache.coyote.AbstractProtocol init
+INFO: Initializing ProtocolHandler ["http-nio-8080"]
+Dec 25, 2023 1:17:16 PM org.apache.catalina.startup.Catalina load
+INFO: Server initialization in [1129] milliseconds
+Dec 25, 2023 1:17:16 PM org.apache.catalina.core.StandardService startInternal
+INFO: Starting service [Catalina]
+Dec 25, 2023 1:17:16 PM org.apache.catalina.core.StandardEngine startInternal
+INFO: Starting Servlet engine: [Apache Tomcat/10.0.17]
+Dec 25, 2023 1:17:18 PM org.apache.catalina.util.SessionIdGeneratorBase createSecureRandom
+WARNING: Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [633] milliseconds.
+Dec 25, 2023 1:17:19 PM org.apache.jasper.servlet.TldScanner scanJars
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+Dec 25, 2023 1:17:19 PM org.apache.coyote.AbstractProtocol start
+INFO: Starting ProtocolHandler ["http-nio-8080"]
+Dec 25, 2023 1:17:19 PM org.apache.catalina.startup.Catalina start
+INFO: Server startup in [2640] milliseconds
+entered do get method: 
+name: Pavan
+city: Hyd 
+number: 1234
+dummy: null
+
+Header section from the chrome network: 
+
+Request URL:
+http://localhost:8080/web_app_demo2_registration/regitration?name=Pavan&city=Hyd+&phone_no=1234
+
+http://localhost:8080/web_app_demo2_registration/regitration?name=Pavan&city=Hyd+&phone_no=1234
+protocol://my_machine:port_number/app_name/action/attributes passed from  form              
+
+Request Method:
+GET
+
+Status Code:
+200 OK
+
+Request Headers:
+Host:
+localhost:8080
+Referer:
+http://localhost:8080/web_app_demo2_registration/index.html
+
+
+Second session 24/11/2020
+dec 25
+       
+create table crud (name varchar(20), city varchar(10), emailId varchar(20), mobile varchar(10));
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>CRUD Operation</title>
+</head>
+<body>
+     TO PERFORM CRUD OPERATION
+     <!-- action used to connect with servlet and method get/post -->
+     <form action="crud" method="post">
+     Name: <input type="text" name="name">
+     City: <input type="text" name="city">
+     Email Id: <input type="text" name="email">
+     Mobile Number: <input type="text" name="mobile">
+     <input type="submit" value="register">
+     <input type="reset" value="reset">
+     </form>
+</body>
+</html>
+                
+
+package p1;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+@WebServlet("/crud")  // annotation used to conenct to UI form action
+public class PerformCRUDOperation extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("Entered in to do post method:");
+		//to fetch url header parameter with name attribute 
+		String nameValue = request.getParameter("name");
+		System.out.println("nameValue: " + nameValue);
+		
+		String cityValue = request.getParameter("city");
+		System.out.println("cityValue: " + cityValue);
+		
+		String emailValue = request.getParameter("email");
+		System.out.println("emailValue: " + emailValue);
+		
+		String mobileValue = request.getParameter("mobile");
+		System.out.println("mobileValue: " + mobileValue);
+		
+		//connect with DB - first we need to add mysql connector jar in lib folder
+		try {
+			//to load the driver apache tomcat not able to load by default
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_registration","root","Kiran@123");
+		    Statement createStatement = connection.createStatement();
+		    //to insert values in to db
+		    createStatement.executeUpdate("insert into crud values('"+nameValue+"','"+cityValue+"','"+emailValue+"','"+mobileValue+"')");
+		    //to update row in db
+//		    createStatement.executeUpdate("update crud set city='"+cityValue+"' where name='"+nameValue+"'");
+		    //to delete row
+//		    createStatement.executeUpdate("delete from crud where name='"+nameValue+"'");
+		   //to read value from db
+//		    ResultSet executeQuery = createStatement.executeQuery("select * from crud");
+//		    System.out.println("executeQuery: " + executeQuery);
+		    connection.close();
+		} catch (SQLException | ClassNotFoundException e) {                                                      
+			// TODO Auto-generated catch block
+			System.out.println("Exception occured: ");
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+
+}
+
+Session 3 25/11/2020 Dec 25	
+
+ Calling servlet instead of form to anchor - navigation link
+
+index.html:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>home page - navigation</title>
+</head>
+<body>
+     <a href="navigation">click me</a>
+</body>
+</html>
+
+LinkNavigation.java
+package p1;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet("/navigation")
+
+public class LinkNavigation extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public LinkNavigation() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("do get method: ");
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("do post method: ");
+	}
+
+}
+
+
+--Writing back to UI/form---
