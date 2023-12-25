@@ -86,4 +86,118 @@ public class FirstServlet extends HttpServlet {
 
 ---now run the html page on apache
  
- 	
+USER REGISTRATION:	
+
+index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>home page</title>
+</head>
+<body>
+    <form action="regitration" method="get">
+      Name : <input type="text" name="name">
+      City : <input type="text" name="city">
+      Mobile No : <input type="text" name="phone_no">
+      <input type="submit" value="register">
+     
+    </form>
+</body>
+</html>
+
+
+UserRegistration.java 
+
+package p1;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet("/regitration")
+public class UserRegistration extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("entered do get method: ");
+		
+		String name = request.getParameter("name");
+		System.out.println("name: "  + name);
+		
+		String city = request.getParameter("city");
+		System.out.println("city: "  + city);	
+		
+		String number = request.getParameter("phone_no");
+		System.out.println("number: "  + number);
+		
+		String dummy = request.getParameter("dummy");
+		System.out.println("dummy: "  + dummy);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("entered do post method: ");
+	}
+
+}
+
+-printing all the details from request parameter
+
+we need to connect with the DB:
+
+ create new db in mysql work bench 
+ web_app_demo2_registration - DB 
+
+create database user_registration;
+
+use user_registration;
+
+create table details(name varchar(10), city varchar(10), number int(10));
+
+select * from details;                                            
+
+first Session b                                                                                                                                                                  
+copy jar into lib folder 
+
+If we are not loading the driver, apache will not able to load we need load explicitly
+
+java.sql.SQLException: No suitable driver found for jdbc:mysql://localhost:3306/user_registration
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:706)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
+	at p1.UserRegistration.doGet(UserRegistration.java:35)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:668)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:777)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:223)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:185)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:158)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:119)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:690)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:355)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:866)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1716)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+
+
+                                                                                                                                                                                                                                                                
+                                                                                                              
+ 	                              
