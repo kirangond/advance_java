@@ -500,3 +500,6 @@ public class LinkNavigation extends HttpServlet {
 	}
 
 }
+
+
+--Writing back to UI/form---
