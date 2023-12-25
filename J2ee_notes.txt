@@ -363,6 +363,140 @@ http://localhost:8080/web_app_demo2_registration/index.html
 Second session 24/11/2020
 dec 25
        
-	   
-                                                                                                              
- 	                              
+create table crud (name varchar(20), city varchar(10), emailId varchar(20), mobile varchar(10));
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>CRUD Operation</title>
+</head>
+<body>
+     TO PERFORM CRUD OPERATION
+     <!-- action used to connect with servlet and method get/post -->
+     <form action="crud" method="post">
+     Name: <input type="text" name="name">
+     City: <input type="text" name="city">
+     Email Id: <input type="text" name="email">
+     Mobile Number: <input type="text" name="mobile">
+     <input type="submit" value="register">
+     <input type="reset" value="reset">
+     </form>
+</body>
+</html>
+                
+
+package p1;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+@WebServlet("/crud")  // annotation used to conenct to UI form action
+public class PerformCRUDOperation extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("Entered in to do post method:");
+		//to fetch url header parameter with name attribute 
+		String nameValue = request.getParameter("name");
+		System.out.println("nameValue: " + nameValue);
+		
+		String cityValue = request.getParameter("city");
+		System.out.println("cityValue: " + cityValue);
+		
+		String emailValue = request.getParameter("email");
+		System.out.println("emailValue: " + emailValue);
+		
+		String mobileValue = request.getParameter("mobile");
+		System.out.println("mobileValue: " + mobileValue);
+		
+		//connect with DB - first we need to add mysql connector jar in lib folder
+		try {
+			//to load the driver apache tomcat not able to load by default
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_registration","root","Kiran@123");
+		    Statement createStatement = connection.createStatement();
+		    //to insert values in to db
+		    createStatement.executeUpdate("insert into crud values('"+nameValue+"','"+cityValue+"','"+emailValue+"','"+mobileValue+"')");
+		    //to update row in db
+//		    createStatement.executeUpdate("update crud set city='"+cityValue+"' where name='"+nameValue+"'");
+		    //to delete row
+//		    createStatement.executeUpdate("delete from crud where name='"+nameValue+"'");
+		   //to read value from db
+//		    ResultSet executeQuery = createStatement.executeQuery("select * from crud");
+//		    System.out.println("executeQuery: " + executeQuery);
+		    connection.close();
+		} catch (SQLException | ClassNotFoundException e) {                                                      
+			// TODO Auto-generated catch block
+			System.out.println("Exception occured: ");
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+
+}
+
+Session 3 25/11/2020 Dec 25	
+
+ Calling servlet instead of form to anchor - navigation link
+
+index.html:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>home page - navigation</title>
+</head>
+<body>
+     <a href="navigation">click me</a>
+</body>
+</html>
+
+LinkNavigation.java
+package p1;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet("/navigation")
+
+public class LinkNavigation extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public LinkNavigation() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("do get method: ");
+		
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("do post method: ");
+	}
+
+}
