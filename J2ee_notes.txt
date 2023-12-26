@@ -643,3 +643,218 @@ public class DirectAccess extends HttpServlet {
 
 
 ---InterServlet Communication---
+
+index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>home page</title>
+</head>
+<body>
+   <form action="firstServlet" method="post">
+   Name: <input type="text" name="name">
+   <input type="submit" value="submit">  
+   </form>
+</body>
+</html>
+
+FirstServlet
+
+package p1;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet("/firstServlet")
+public class FirstServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public FirstServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("Entered do post method: ");
+		//fetch the request parameter entered in UI - name
+		String nameValue = request.getParameter("name");
+		System.out.println("nameValue: " + nameValue);
+		
+		//setting nameValue to other varaible
+		request.setAttribute("newMessage", nameValue);
+		
+		//redirecting to second servlet
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("secondServlet");
+	    requestDispatcher.forward(request, response);
+	}
+
+}
+
+SecondServlet
+
+package p1;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+@WebServlet("/secondServlet")
+public class SecondServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public SecondServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("entered do post of SecondServlet class: ");
+		//of type Object hence convert into String 
+//		Object attribute = request.getAttribute("newMessage");
+		
+		String attribute = (String) request.getAttribute("newMessage");
+		System.out.println("attribute in second servlet : " + attribute);
+		
+		//printing back on UI
+		PrintWriter writer = response.getWriter();
+		writer.println("successfully able to get the name: " + attribute);
+	}
+
+}
+
+
+--validate user--
+
+login.html
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Page</title>
+</head>
+<body>
+    <h1>Validate The User</h1>
+    <form action="authenticate" method="get">
+    email Id: <input type="text" name="email">
+    Password: <input type="text" name="password">
+    <input type="submit" value="login">
+    </form>
+
+</body>
+</html>
+
+ValidateUserDetails.java 
+package p1;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+@WebServlet("/authenticate")
+public class ValidateUserDetails extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public ValidateUserDetails() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("validate user: do get method");
+		
+		try {
+			//fetch the email and password
+			String emailValue = request.getParameter("email");
+			System.out.println("emailValue: " + emailValue);
+			String passwordValue = request.getParameter("password");
+			System.out.println("passwordValue: " + passwordValue);
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_registration","root","Kiran@123");
+		    Statement createStatement = connection.createStatement();
+		    ResultSet executeQuery = createStatement.executeQuery("select * from user_details where email='"+emailValue+"' and password='"+passwordValue+"'");
+		    
+		    if(executeQuery.next())
+		    {
+		    	System.out.println("user is valid: ");
+		    	RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/views/valid.html");
+		    	requestDispatcher.forward(request, response);
+		    }
+		    else
+		    {
+		    	System.out.println("customer is invalid: ");
+		    	RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/views/invalid.html");
+		    	requestDispatcher.forward(request, response);
+		    }
+		    
+		} catch (SQLException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception occured: ");
+			e.printStackTrace();
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+
+}
+
+
+valid.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Valid User</title>
+</head>
+<body>
+     <h1>Valid User: Access granted</h1>
+</body>
+</html>
+
+invalid.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Invalid User</title>
+</head>
+<body>
+  <h1>Invalid User: Access Denied</h1>
+</body>
+</html>
+
+
+Session Dec 26 37/11/2020
