@@ -501,5 +501,142 @@ public class LinkNavigation extends HttpServlet {
 
 }
 
+----retrtive data---
+index.html:
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>CRUD Operation</title>
+</head>
+<body>
+     TO PERFORM Retrieve OPERATION
+    <form action="fetch" method="get">
+         <input type="submit" value="retrieve">
+     </form>
+</body>
+</html>
+
+PerformCRUDOperation.java
+package p1;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+@WebServlet("/fetch") // annotation used to conenct to UI form action
+public class PerformCRUDOperation extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("Entered in to do get method:");
+
+		// connect with DB - first we need to add mysql connector jar in lib folder
+		try {
+			// to load the driver apache tomcat not able to load by default
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_registration", "root",
+					"Kiran@123");
+			Statement createStatement = connection.createStatement();
+			// to insert values in to db
+			ResultSet resultSet = createStatement.executeQuery("select * from crud");
+			System.out.println("resultSet: "+ resultSet);
+			//while is boolean condition check for the rows
+			while (resultSet.next()) {
+				
+				System.out.println(resultSet.getString(1)); //column 1
+				System.out.println(resultSet.getString(2)); //column 2 
+				System.out.println(resultSet.getString(3));
+				System.out.println(resultSet.getString(4));
+			}
+			connection.close();
+		} catch (SQLException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception occured: ");
+			e.printStackTrace();
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+	}
+
+}
+
 
 --Writing back to UI/form---
+
+Servlets are server-side components that handle HTTP requests and generate responses
+ servlet container - apache tomcat 
+ 
+correct path: http://localhost:8080/web_app_demo6_writeback/UserData
+
+Sessoin 4 - Dec 26 
+26/11/20
+
+RequestDispatcher - it will redirect to other page 
+
+If we create .html in webapp it will be directly accessed 
+
+/web_app_demo7_nodirectaccess/src/main/webapp/WEB-INF/views/nodirectaccess.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>webinf views </title>
+</head>
+<body>
+     no direct access - need to accessed by servlet only
+     If we create in webapp - directly accessed
+</body>
+</html>
+
+
+DirectAccess.java 
+package p1;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class DirectAccess extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public DirectAccess() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("request: " + request);
+		System.out.println("response: " + response);
+		System.out.println("by default do get method executed when we run Servlet directly: ");
+		//to print on UI
+		PrintWriter writer = response.getWriter();
+		writer.println("printing back on UI from DirectAccess Servlet doGet method: ");
+	    //redirecting to other page
+		RequestDispatcher redirectToOtherPgae = request.getRequestDispatcher("WEB-INF/views/nodirectaccess.html");
+		redirectToOtherPgae.forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+
+}

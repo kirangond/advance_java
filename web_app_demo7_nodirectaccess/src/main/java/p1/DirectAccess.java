@@ -1,5 +1,6 @@
 package p1;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,19 +9,25 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class UserData extends HttpServlet {
+public class DirectAccess extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public UserData() {
+	public DirectAccess() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	//correct path in UI to load resource: http://localhost:8080/web_app_demo6_writeback/UserData
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	//	System.out.println("do get method by default executed: ");
+		System.out.println("request: " + request);
+		System.out.println("response: " + response);
+		System.out.println("by default do get method executed when we run Servlet directly: ");
+		//to print on UI
 		PrintWriter writer = response.getWriter();
-		writer.println("kiran");
+		writer.println("printing back on UI from DirectAccess Servlet doGet method: ");
+	    //redirecting to other page
+		RequestDispatcher redirectToOtherPgae = request.getRequestDispatcher("WEB-INF/views/nodirectaccess.html");
+		redirectToOtherPgae.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

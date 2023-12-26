@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <servlet>
+    <description></description>
+    <display-name>NoDirectAccess</display-name>
+    <servlet-name>NoDirectAccess</servlet-name>
+    <servlet-class>p1.NoDirectAccess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NoDirectAccess</servlet-name>
+    <url-pattern>/NoDirectAccess</url-pattern>
+  </servlet-mapping>
+  <display-name>web_app_demo7_nodirectaccess</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>DirectAccess</display-name>
+    <servlet-name>DirectAccess</servlet-name>
+    <servlet-class>p1.DirectAccess</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DirectAccess</servlet-name>
+    <url-pattern>/DirectAccess</url-pattern>
+  </servlet-mapping>
+</web-app>
