@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-@WebServlet("/crud") // annotation used to conenct to UI form action
+@WebServlet("/fetch") // annotation used to conenct to UI form action
 public class PerformCRUDOperation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,8 +29,13 @@ public class PerformCRUDOperation extends HttpServlet {
 			Statement createStatement = connection.createStatement();
 			// to insert values in to db
 			ResultSet resultSet = createStatement.executeQuery("select * from crud");
+			System.out.println("resultSet: "+ resultSet);
 			while (resultSet.next()) {
+				
 				System.out.println(resultSet.getString(1));
+				System.out.println(resultSet.getString(2));
+				System.out.println(resultSet.getString(3));
+				System.out.println(resultSet.getString(4));
 			}
 			connection.close();
 		} catch (SQLException | ClassNotFoundException e) {
