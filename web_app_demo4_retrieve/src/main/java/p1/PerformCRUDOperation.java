@@ -30,10 +30,11 @@ public class PerformCRUDOperation extends HttpServlet {
 			// to insert values in to db
 			ResultSet resultSet = createStatement.executeQuery("select * from crud");
 			System.out.println("resultSet: "+ resultSet);
+			//while is boolean condition check for the rows
 			while (resultSet.next()) {
 				
-				System.out.println(resultSet.getString(1));
-				System.out.println(resultSet.getString(2));
+				System.out.println(resultSet.getString(1)); //column 1
+				System.out.println(resultSet.getString(2)); //column 2 
 				System.out.println(resultSet.getString(3));
 				System.out.println(resultSet.getString(4));
 			}

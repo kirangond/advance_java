@@ -15,11 +15,12 @@ public class UserData extends HttpServlet {
 		super();
 	}
 
+	//correct path in UI to load resource: http://localhost:8080/web_app_demo6_writeback/UserData
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("do get method by default executed: ");
-//		PrintWriter writer = response.getWriter();
-//		writer.print("kiran");
+	//	System.out.println("do get method by default executed: ");
+		PrintWriter writer = response.getWriter();
+		writer.println("kiran");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
