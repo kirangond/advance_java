@@ -857,4 +857,6 @@ invalid.html
 </html>
 
 
-Session Dec 26 37/11/2020
+Session Dec 26 27/11/2020
+
+- stores the data in a such way that accessible across all the pages 
