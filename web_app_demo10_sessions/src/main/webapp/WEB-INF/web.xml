@@ -29,4 +29,14 @@
     <servlet-name>SecondServlet</servlet-name>
     <url-pattern>/SecondServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ThirdServletSession</display-name>
+    <servlet-name>ThirdServletSession</servlet-name>
+    <servlet-class>p1.ThirdServletSession</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ThirdServletSession</servlet-name>
+    <url-pattern>/ThirdServletSession</url-pattern>
+  </servlet-mapping>
 </web-app>
