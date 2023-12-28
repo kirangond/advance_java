@@ -19,4 +19,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ThirdServlet</display-name>
+    <servlet-name>ThirdServlet</servlet-name>
+    <servlet-class>com.lifecycle.controller.ThirdServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ThirdServlet</servlet-name>
+    <url-pattern>/ThirdServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
