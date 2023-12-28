@@ -6,5 +6,30 @@
 </head>
 <body>
      <h2>Authenticated the user: Valid user</h2>
+     <h6>New Registration:</h6>
+      
+      <form action="logoutServlet" method="post">
+      <input type="submit" value="logout">
+      </form>
+      <form action="registerServlet" method="post">
+       <table>
+       <tr>
+       <td>Name:<input type="text" name="name"></td>
+       </tr>
+       <tr>
+       <td>City:<input type="text" name="city"></td>
+       </tr>
+       <tr>
+       <td>Email:<input type="text" name="email"></td>
+       </tr>
+       <tr>
+       <td>Phone<input type="text" name="phone"></td>
+       </tr>
+       <tr>
+       <td><input type="submit" value="submit"></td>
+       </tr>
+       </table>
+      </form>
+     
 </body>
 </html>
