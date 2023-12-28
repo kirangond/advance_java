@@ -860,3 +860,225 @@ invalid.html
 Session Dec 26 27/11/2020
 
 - stores the data in a such way that accessible across all the pages 
+
+
+index.html:
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login home page</title>
+</head>
+<body>
+     <form action="validateUserSession" method="post">
+     user name: <input type="text" name="name">
+     password: <input type="password" name="password">
+     <input type="submit" value="login">
+     </form>
+</body>
+</html>
+
+ValidateServlet:
+package com.validate;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+@WebServlet("/validateUserSession")
+public class ValidateServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public ValidateServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("do post method: ");
+	
+		String nameValue = request.getParameter("name");
+		System.out.println("nameValue: " + nameValue);
+		String passwordValue =  request.getParameter("password");
+		System.out.println("passwordValue: " + passwordValue);
+		
+		try 
+		{
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_registration","root","Kiran@123");
+		    Statement createStatement = connection.createStatement();
+		    ResultSet executeQuery = createStatement.executeQuery("select * from user_details where email='"+nameValue+"' and password='"+passwordValue+"'");
+		    //creating first time session 
+		    HttpSession session = request.getSession(true);
+		    if(executeQuery.next())
+		    {
+		    	System.out.println("authenticated the user: ");
+		    	
+		    	session.setAttribute("username", nameValue);
+		    	Object attribute = session.getAttribute("username");
+		    	System.out.println("attribute: " + attribute);
+		    	RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/views/home.html");
+		    	requestDispatcher.forward(request, response);
+		    	
+		    	
+		    }
+		    else
+		    {
+		    	System.out.println("not valid user remain on same page:");
+		    	RequestDispatcher requestDispatcher1 = request.getRequestDispatcher("index.html");
+		    	requestDispatcher1.forward(request, response);
+		    	}
+		}
+				
+		 catch (SQLException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			 System.out.println("Exception occured: " + e +"/n");
+			e.printStackTrace();
+		}
+	}
+	
+
+}
+
+
+
+Dec 27 28/11/20 Session 6
+
+Session 7 Dec 28 30/11/20
+JSP (Java Server Page)
+
+index.jsp:
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>home page</title>
+</head>
+<body>
+<!-- scriplet tag - we can write java code in it  but can't use access specifier and cab't create method in it-->
+     <% 
+       
+       for(int i=0;i<10;i++)
+       {
+    	   out.println(i); //built in method
+       }
+     
+     %>
+     <br/>
+     <%
+        int x = 5;
+       out.println(x);
+     %>
+     <br>
+</body>
+</html>
+
+o/p on UI:
+0 1 2 3 4 5 6 7 8 9
+5
+
+index.jsp:
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>home page declarative tag</title>
+</head>
+<body>
+  <h1>Use of declarative tag</h1>
+  <!-- declarative tag - we can define access sepcifier but can't use built in variables -->
+  <%!
+      public int i = 10;
+      public int test()
+      {
+    	  return 100;
+      }
+  %>
+   <br/>
+   <!-- scriplet tag we can define variable and built in methods, for and if condition -->
+  <%
+      out.println(i);
+	  int x=test();
+		   out.println(x);
+  %>
+</body>
+</html>
+
+o/p on UI:
+Use of declarative tag
+
+10 100
+
+expression and directive tag
+index.jsp
+
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <!-- directive tag for importing -->
+<%@ page import="java.util.Date"%> 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>home page for expression, directive</title>
+</head>
+<body>
+
+    <%
+      int x = 10;
+    %>
+   <!-- expression tag evaluate statement and print--> 
+    <%=x %>
+    <%=new Date() %>
+    
+</body>
+</html>
+
+o/p:
+10 Thu Dec 28 13:20:12 IST 2023
+
+
+include.jsp:
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>include tag</title>
+</head>
+ <%@include file="resume.txt" %>
+<body>
+    <h2>Include other .txt file into jsp</h2>
+   
+    <%@include file="company.txt" %>
+</body>
+</html>
+
+o/p:
+My self Kirangond, completed B.E from NIE college and having 2.5yr of experience
+Include other .txt file into jsp
+I am from Lumen Technologies
