@@ -1030,3 +1030,55 @@ o/p on UI:
 Use of declarative tag
 
 10 100
+
+expression and directive tag
+index.jsp
+
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    <!-- directive tag for importing -->
+<%@ page import="java.util.Date"%> 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>home page for expression, directive</title>
+</head>
+<body>
+
+    <%
+      int x = 10;
+    %>
+   <!-- expression tag evaluate statement and print--> 
+    <%=x %>
+    <%=new Date() %>
+    
+</body>
+</html>
+
+o/p:
+10 Thu Dec 28 13:20:12 IST 2023
+
+
+include.jsp:
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>include tag</title>
+</head>
+ <%@include file="resume.txt" %>
+<body>
+    <h2>Include other .txt file into jsp</h2>
+   
+    <%@include file="company.txt" %>
+</body>
+</html>
+
+o/p:
+My self Kirangond, completed B.E from NIE college and having 2.5yr of experience
+Include other .txt file into jsp
+I am from Lumen Technologies
