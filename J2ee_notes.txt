@@ -1082,3 +1082,121 @@ o/p:
 My self Kirangond, completed B.E from NIE college and having 2.5yr of experience
 Include other .txt file into jsp
 I am from Lumen Technologies
+
+session 8 Dec 28
+01/12/2020
+MVC architecture:
+
+(model(business logic/DB code) view(front end) controller(servlet))
+
+
+index.jsp:
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>home page</title>
+</head>
+<body>
+    <form action="addTwoNumber" method="post">
+    Num1: <input type="text" name="num1">
+    Num2: <input type="text" name="num2">
+    <input type="submit" value="add">
+    </form>
+    <!-- fetch result after setting the value to resultUI -->
+    <%
+     if(request.getAttribute("resultUI")!=null)
+     {
+       out.println(request.getAttribute("resultUI"));
+     }
+    %>
+     <%
+     if(request.getAttribute("error_message")!=null)
+     {
+       out.println(request.getAttribute("error_message"));
+     }
+    %>
+</body>
+</html>
+
+com\calculation\controller\AddNumberServlet.java
+package com.calculation.controller;
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+import com.calculation.model.AddNumbers;
+
+@WebServlet("/addTwoNumber")
+public class AddNumberServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public AddNumberServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("Entered do post method: ");
+		//fetch the num1 and num2 from the form header parameter
+		//by default entered value will be string so we need to convert into interger using wrapper class
+		//String num1Value = request.getParameter("num1");
+		
+		//we need to handle the exception for bad input
+		try {
+		int num1Value =  Integer.parseInt(request.getParameter("num1"));
+		int num2Value =  Integer.parseInt(request.getParameter("num2"));
+		System.out.println("num1Value  : " + num1Value + " num2Value  : " + num2Value);
+		//we need to call add logic method
+		AddNumbers obj = new AddNumbers();
+		int result = obj.add(num1Value, num2Value);
+		System.out.println("result: " + result);
+		
+		//result we need to display on UI so set into new variable
+		request.setAttribute("resultUI", result);
+		
+		//remain on the same after clicking on add
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+		requestDispatcher.forward(request, response);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Exception occured setting o/p as invalid input: ");
+			request.setAttribute("error_message", "invalid_input");
+			RequestDispatcher requestDispatcher1 = request.getRequestDispatcher("index.jsp");
+			requestDispatcher1.forward(request, response);
+		}
+	}
+
+}
+
+com\calculation\model\AddNumbers.java
+package com.calculation.model;
+
+public class AddNumbers {
+		//logic for addition of 2 numbers in java class
+		public int add(int num1, int num2)
+		{
+			return num1+num2;
+		}
+
+	
+
+}
+
+
+
+02/12/20 Dec 28 Session 9
