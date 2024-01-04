@@ -20,9 +20,11 @@ public class Login {
 //			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_registration","root","Kiran@123"); 
 		    createStatement = connection.createStatement();
 		    resultSet = createStatement.executeQuery("select * from user_details where email='"+email+"' and password='"+password+"'");
-		   
+	  
 		   if(resultSet.next())
+			   
 			    return true;
+		  
 		}
 			
 		 catch (SQLException e) {
