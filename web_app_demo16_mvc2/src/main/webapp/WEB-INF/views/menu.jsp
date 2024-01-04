@@ -5,14 +5,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <!-- link external style sheet with -->
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 <title>menu page</title>
 </head>
 <body>
    <div class="main">
-    <a href="#home">New Registration</a>
-    <a href="#news">about us</a>
-    <a href="#contact">Contact us</a>
+   <a href="#news">Home</a>
+    <a href="#userRegistrationController">New Registration</a>
+   <a href="#contact">Show Registration</a>
+    <a href="#contact">Contact Us</a>
   </div>
 </body>
 </html>
