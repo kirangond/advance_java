@@ -29,4 +29,14 @@
     <servlet-name>UserRegistrationController</servlet-name>
     <url-pattern>/UserRegistrationController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>NewpageController</display-name>
+    <servlet-name>NewpageController</servlet-name>
+    <servlet-class>com.demo.controller.NewpageController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewpageController</servlet-name>
+    <url-pattern>/NewpageController</url-pattern>
+  </servlet-mapping>
 </web-app>
