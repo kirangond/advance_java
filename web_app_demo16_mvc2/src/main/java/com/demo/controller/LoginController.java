@@ -1,10 +1,13 @@
 package com.demo.controller;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.sql.Connection;
 
@@ -31,9 +34,23 @@ public class LoginController extends HttpServlet {
 		System.out.println("emailValue: " + emailValue + "passwordValue: " + passwordValue);
 		DatabaseConnection databaseConnection = new DatabaseConnection();
 		Connection establishConnection = databaseConnection.establishConnection();
+		System.out.println("establishConnection: " + establishConnection);
 	 Login login = new Login();
 	 boolean verifyLogin = login.verifyLogin(emailValue, passwordValue,establishConnection);
 	 System.out.println("verifyLogin result: " + verifyLogin) ;
+	 HttpSession session = request.getSession(true);
+	 if(verifyLogin==true)
+	 {
+		 session.setAttribute("emailId", emailValue);
+		 RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/views/userRegistration.jsp");
+		 requestDispatcher.forward(request, response);
+	 }else
+	 {
+		 request.setAttribute("error_message", "invalid username/password");
+		 RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+		 requestDispatcher.forward(request, response);
+	 }
+	 
 	}
 
 }

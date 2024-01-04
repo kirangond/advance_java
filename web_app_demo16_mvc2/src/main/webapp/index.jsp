@@ -8,6 +8,14 @@
 </head>
 <body>
        <h1>Login Here</h1>
+       <p>
+       <% 
+         if(request.getAttribute("error_message")!=null)
+         {
+        	 out.println(request.getAttribute("error_message"));
+         }
+       %>
+       </p>
        <form action="loginController" method="post">
        email id: <input type="text" name="email">
        password: <input type="text" name="password">
