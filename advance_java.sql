@@ -16,3 +16,7 @@ insert into user_details values('rahul@gmail.com','143');
 
 create table register(name varchar(10),city varchar(10),email varchar(20),phone varchar(10));
 select * from register;
+
+create table registration(firstname varchar(10),lastname varchar(10),email varchar(25),city varchar(10));
+
+select * from registration;

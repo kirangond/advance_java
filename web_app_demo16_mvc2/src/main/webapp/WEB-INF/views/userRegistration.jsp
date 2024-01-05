@@ -14,7 +14,7 @@
     <h3>New Registration form</h3>
 
 <div class="container">
-  <form action="newpage" method="post">
+  <form action="userRegistration" method="post">
     <label for="fname">First Name</label>
     <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
@@ -24,7 +24,9 @@
    <label for="lname">Email Id</label>
     <input type="text" id="email" name="emailname" placeholder="Your email id..">
 
-    <input type="submit" value="Submit">
+    <label for="cityname">City</label>
+    <input type="text" id="city" name="cityname" placeholder="Your city name..">
+    <input type="submit" value="register">
   </form>
 </div>
      
