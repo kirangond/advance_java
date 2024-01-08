@@ -43,6 +43,9 @@ public class UserRegistrationController extends HttpServlet {
 	 User user = new User();
 	 user.addRegistration( firstName,  lastName,  emailName,   cityName, conn);
 	 
+	 request.setAttribute("msg", "data inserted successfully");
+	RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/userRegistration.jsp");
+	 rd.include(request, response);
 	}
 
 }

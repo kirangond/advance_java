@@ -12,7 +12,12 @@
 </head>
 <body>
     <h3>New Registration form</h3>
-
+  
+  <%
+    if( request.getAttribute("msg")!=null)
+     out.println(request.getAttribute("msg"));
+  %>
+ 
 <div class="container">
   <form action="userRegistration" method="post">
     <label for="fname">First Name</label>
