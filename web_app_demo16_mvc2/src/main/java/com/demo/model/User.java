@@ -1,6 +1,7 @@
 package com.demo.model;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -18,4 +19,15 @@ public class User {
 		}
 	}
 
+	public ResultSet showRegistration(Connection conn) {
+		try {
+			Statement createStatement = conn.createStatement();
+			ResultSet result = createStatement.executeQuery("select * from registration");
+			return result;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

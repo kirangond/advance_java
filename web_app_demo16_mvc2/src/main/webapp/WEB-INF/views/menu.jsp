@@ -11,8 +11,8 @@
 <body>
    <div class="main">
    <a href="#news">Home</a>
-    <a href="#userRegistrationController">New Registration</a>
-   <a href="#contact">Show Registration</a>
+    <a href="userRegistration">New Registration</a>
+   <a href="showUserController">Show Registration</a>
     <a href="#contact">Contact Us</a>
   </div>
 </body>

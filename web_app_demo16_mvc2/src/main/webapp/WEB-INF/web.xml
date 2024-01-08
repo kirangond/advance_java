@@ -39,4 +39,14 @@
     <servlet-name>NewpageController</servlet-name>
     <url-pattern>/NewpageController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowUserController</display-name>
+    <servlet-name>ShowUserController</servlet-name>
+    <servlet-class>com.demo.controller.ShowUserController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowUserController</servlet-name>
+    <url-pattern>/ShowUserController</url-pattern>
+  </servlet-mapping>
 </web-app>
