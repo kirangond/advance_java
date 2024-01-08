@@ -18,6 +18,8 @@
     <th>Last Name</th>
     <th>Email Name</th>
     <th>City Name</th>
+    <th>Update</th>
+    <th>Delete</th>
   </tr>
   <%
   ResultSet results = (ResultSet)request.getAttribute("results");
@@ -28,6 +30,8 @@
 	<td><%  out.println(results.getString(2)); %></td>
 	<td><%  out.println(results.getString(3)); %></td>
 	<td><% out.println(results.getString(4)); %></td>
+	<td><a href="">Update</td>
+	<td><a href="">Delete</td>
 	</tr>
   <% } %>
   
