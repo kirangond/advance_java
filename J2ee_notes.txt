@@ -1208,3 +1208,16 @@ View
 Controller
 
 
+
+
+Jan 8 09/11/20 Session 13
+  - Delete and Update for MVC 
+  
+  passing name for the link:
+  http://localhost:8080/web_app_demo16_mvc2/deleteController?name=%27kiran%27
+  
+  <td><a href="deleteController?name='kiran'">Delete</a></td>
+  
+  
+Jan 9 Session 14
+

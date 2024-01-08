@@ -30,8 +30,10 @@
 	<td><%  out.println(results.getString(2)); %></td>
 	<td><%  out.println(results.getString(3)); %></td>
 	<td><% out.println(results.getString(4)); %></td>
-	<td><a href="">Update</td>
-	<td><a href="">Delete</td>
+	<td><a href="updateController?emailid=<%=results.getString(3)%>&city=<%=results.getString(4)%>">Update</a></td>
+	<!--  <td><a href="deleteController?name='kiran'">Delete</a></td> -->
+	<!-- passsing variable along with link in url -->
+	<td><a href="deleteController?emailid=<%=results.getString(3) %>">Delete</a></td>
 	</tr>
   <% } %>
   
