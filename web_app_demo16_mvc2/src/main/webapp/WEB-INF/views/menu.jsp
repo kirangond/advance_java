@@ -14,6 +14,7 @@
     <a href="userRegistration">New Registration</a>
    <a href="showUserController">Show Registration</a>
     <a href="#contact">Contact Us</a>
+     <a href="logoutController">Logout</a>
   </div>
 </body>
 </html>

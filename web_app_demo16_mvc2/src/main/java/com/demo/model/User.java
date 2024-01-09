@@ -42,11 +42,13 @@ public class User {
 		}
 	}
 	
-	public void updateRegistration(String emailId, Connection conn)
+	public void updateRegistration(String emailId, String city,  Connection conn)
 	{
 		try {
 			Statement createStatement = conn.createStatement();
-			createStatement.executeUpdate("update registration set city='"+null+"' where email='"+emailId+"'");
+			System.out.println("city name: " + city);
+			System.out.println("email name: " + emailId);
+			createStatement.executeUpdate("update registration set city='"+city+"' where email='"+emailId+"'");
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

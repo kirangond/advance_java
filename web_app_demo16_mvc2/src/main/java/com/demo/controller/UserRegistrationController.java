@@ -6,6 +6,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.sql.Connection;
 
@@ -27,7 +29,11 @@ public class UserRegistrationController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	 System.out.println("entered do post method:");
+	
+		//after log out should not perform any operation
+		HttpSession session = request.getSession(false);
+		if(session.getAttribute("emailId")!=null) {
+		System.out.println("entered do post method:");
 	 String firstName = request.getParameter("firstname");
 	 String lastName = request.getParameter("lastname");
 	 String emailName = request.getParameter("emailname");
@@ -47,5 +53,5 @@ public class UserRegistrationController extends HttpServlet {
 	RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/userRegistration.jsp");
 	 rd.include(request, response);
 	}
-
+	}
 }
