@@ -1219,5 +1219,5 @@ Jan 8 09/11/20 Session 13
   <td><a href="deleteController?name='kiran'">Delete</a></td>
   
   
-Jan 9 Session 14
-
+Jan 9 10/12/20 Session 14
+ Delete and Update features

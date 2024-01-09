@@ -37,15 +37,31 @@ public class UpdateController extends HttpServlet {
 	 
 	 
 	 
-	 DatabaseConnection db = new DatabaseConnection();
-	 Connection conn = db.establishConnection();
-	 User user = new User();
-	 user.updateRegistration(emailValue,conn);
+//	 DatabaseConnection db = new DatabaseConnection();
+//	 Connection conn = db.establishConnection();
+//	 User user = new User();
+//	 user.updateRegistration(emailValue,conn);
 	 
 	 
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 String emailValue = request.getParameter("emailname");
+		 String cityName = request.getParameter("cityname");
+		try {
+			DatabaseConnection db = new DatabaseConnection();
+			Connection conn = db.establishConnection();
+			User user = new User();
+			user.updateRegistration(emailValue,cityName, conn);
+			//before forwarding we need to set attribute
+			//Fix defect 1 do not show blank value after updating - use results set for the fix
+			request.setAttribute("update_message", "record updated");
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/upadateReg.jsp");
+			rd.forward(request, response);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 }

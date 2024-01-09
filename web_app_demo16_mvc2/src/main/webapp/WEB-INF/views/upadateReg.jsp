@@ -9,7 +9,13 @@
 </head>
 <body>
 <h2>Update User</h2>
-   <form action=updateController method="post">
+  <%
+    if(request.getAttribute("update_message")!=null)
+    {
+    	out.println(request.getAttribute("update_message"));
+    }
+  %>
+   <form action="updateController" method="post">
     
 
    <label for="ename">Email Id</label>
