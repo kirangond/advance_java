@@ -1218,6 +1218,18 @@ Jan 8 09/11/20 Session 13
   
   
 Jan 9 10/12/20 Session 14
- Delete and Update features
+ Delete and Update features and logout
+ 
+ 09/01/2024 Session 15 11/12/2020
+ Prepared statement
+ 
+ we set values dynamically
+ 
+ Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_registration","root","Kiran@123");
+			PreparedStatement ps = connection.prepareStatement("insert into statement values (?,?)");
+			ps.setString(1, "kiran@gmail.com");
+			ps.setString(2, "123");
+			ps.executeUpdate();
 
 
