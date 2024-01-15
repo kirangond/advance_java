@@ -1233,3 +1233,59 @@ Jan 9 10/12/20 Session 14
 			ps.executeUpdate();
 
 
+Jan 15 
+  - Unit testing
+   create a simple java project :
+   
+ public class JunitTesting {
+	
+	@Test //to run the test case
+	public void test1()
+	{
+		System.out.println("from test1 method(): ");
+	}
+	
+	@Before //will run before every test case
+	public void before()
+	{
+		System.out.println("before method(): ");
+	}
+	
+	@After //will run after every test case
+	public void after()
+	{
+		System.out.println("after method(): ");
+	}
+
+	@Test
+	public void test2()
+	{
+		System.out.println("from test2 method(): ");
+	}
+	
+	@BeforeClass //will run only once before test case and method should be static
+	public static void beforeClass()
+	{
+		System.out.println("beforeClass method(): ");
+	}
+	
+	@AfterClass //will run only once after test case
+	public static void afterClass()
+	{
+		System.out.println("afterClass method(): ");
+	}
+	
+	
+	
+}
+
+o/p:
+ beforeClass method(): 
+before method(): 
+from test1 method(): 
+after method(): 
+before method(): 
+from test2 method(): 
+after method(): 
+afterClass method(): 
+
