@@ -1239,6 +1239,24 @@ Jan 15
   - Unit testing
    create a simple java project :
    
+   by default junit library in eclipse
+
+
+@Test 
+ - to execute test cases - by default eclipse has junit.
+
+@Before
+  - It will execute before all test cases.
+ 
+@After
+   - It will execute after all test cases.
+   
+@BeforeClass 
+   - It will execute before all test case only once Note: method should be static.
+
+@AfterClass
+  - - It will execute after all test case only once Note: method should be stati
+  
  public class JunitTesting {
 	
 	@Test //to run the test case
@@ -1290,3 +1308,63 @@ before method():
 from test2 method(): 
 after method(): 
 afterClass method(): 
+
+
+TestNg:
+ testNg does not comes with eclipse by default
+how to configure 
+https://testng.org/
+https://testng.org/doc/eclipse.html#eclipse-installation
+https://testng.org/testng-eclipse-update-site. (https://testng.org/testng-eclipse-update-site/7.4.0)  paste this URL(Eclipse plug-in) in help - Install new software 
+
+Eclipse - Help - Install new software - paste the URL.
+
+public class UnitTestingTestNG {
+	
+	@Test
+	public void test1()
+	{
+		System.out.println("from test1 method(): ");
+	}
+	@BeforeTest //will run before every test case once
+	public void before()
+	{
+		System.out.println("beforetest method(): ");
+	}
+	
+	@AfterTest //will run after every test case only once
+	public void after()
+	{
+		System.out.println("aftertest method(): ");
+	}
+	
+	@Test
+	public void test2()
+	{
+		System.out.println("from test2 method");
+	}
+	
+	@BeforeClass 
+	public static void beforeClass()
+	{
+		System.out.println("beforeClass method(): ");
+	}
+	
+	@AfterClass 
+	public static void afterClass()
+	{
+		System.out.println("afterClass method(): ");
+	}
+}
+
+o/p:
+beforetest method(): 
+beforeClass method(): 
+from test1 method(): 
+from test2 method
+afterClass method(): 
+aftertest method(): 
+PASSED: test1
+PASSED: test2
+
+
