@@ -1369,3 +1369,63 @@ PASSED: test2
 
 
 
+Jan 16: 
+ 
+Jan 19:
+ 
+ @DataProvider - 
+ 
+ 
+Jan 20
+Session 3 16/12/20 
+ 
+ passing parameter: 
+   
+public class ParameterPassing {
+	
+	//fetching url value from the testng.xml file  (value stored in variable url )
+	@Parameters({"url"})
+	@Test
+	public void test(String name) {
+		System.out.println(name);
+	}
+
+}
+
+testng.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+<parameter name="url" value="kiran"></parameter>
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="com.testng.parameter.ParameterPassing"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+
+comparing value with expected output 
+
+public class AddTwoNumbers {
+	
+	public int sum(int a , int b)
+	{
+		int c = a+b;
+		return c;
+	}
+
+}
+
+public class CompareValues {
+	
+	@Test
+	public void test()
+	{
+		AddTwoNumbers obj = new AddTwoNumbers();
+		int result = obj.sum(10, 20);
+		
+		Assert.assertEquals(result, 30);
+	}
+
+}
