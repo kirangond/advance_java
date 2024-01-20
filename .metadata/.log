@@ -10911,3 +10911,134 @@ Caused by: java.io.IOException: The pipe is being closed
 	at java.base/java.io.BufferedOutputStream.flush(BufferedOutputStream.java:142)
 	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageConsumer.consume(StreamMessageConsumer.java:69)
 	... 12 more
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-01-20 12:51:01.697
+!MESSAGE Illegal character in path at index 16: file:/C:/Program Files/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.18.1.20211011-2139/jars/
+!STACK 0
+java.net.URISyntaxException: Illegal character in path at index 16: file:/C:/Program Files/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.18.1.20211011-2139/jars/
+	at java.base/java.net.URI$Parser.fail(URI.java:2974)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3145)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3227)
+	at java.base/java.net.URI$Parser.parse(URI.java:3175)
+	at java.base/java.net.URI.<init>(URI.java:623)
+	at java.base/java.net.URL.toURI(URL.java:1056)
+	at org.eclipse.m2e.editor.lemminx.MavenRuntimeClasspathProvider.addJarsFromBundle(MavenRuntimeClasspathProvider.java:83)
+	at org.eclipse.m2e.editor.lemminx.MavenRuntimeClasspathProvider.get(MavenRuntimeClasspathProvider.java:66)
+	at org.eclipse.m2e.editor.lemminx.MavenRuntimeClasspathProvider.get(MavenRuntimeClasspathProvider.java:1)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.HashMap$EntrySpliterator.forEachRemaining(HashMap.java:1850)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at org.eclipse.wildwebdeveloper.xml.internal.XMLExtensionRegistry.getXMLLSClassPathExtensions(XMLExtensionRegistry.java:81)
+	at org.eclipse.wildwebdeveloper.xml.internal.XMLLanguageServer.getExtensionJarPaths(XMLLanguageServer.java:142)
+	at org.eclipse.wildwebdeveloper.xml.internal.XMLLanguageServer.<init>(XMLLanguageServer.java:83)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:204)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:920)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:246)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.lsp4e.LanguageServersRegistry$ExtensionLanguageServerDefinition.createConnectionProvider(LanguageServersRegistry.java:127)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$1(LanguageServerWrapper.java:222)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2024-01-20 12:51:01.723
+!MESSAGE Illegal character in path at index 16: file:/C:/Program Files/eclipse/plugins/org.eclipse.m2e.maven.indexer_1.18.1.20211011-2139/jars/
+!STACK 0
+java.net.URISyntaxException: Illegal character in path at index 16: file:/C:/Program Files/eclipse/plugins/org.eclipse.m2e.maven.indexer_1.18.1.20211011-2139/jars/
+	at java.base/java.net.URI$Parser.fail(URI.java:2974)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3145)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3227)
+	at java.base/java.net.URI$Parser.parse(URI.java:3175)
+	at java.base/java.net.URI.<init>(URI.java:623)
+	at java.base/java.net.URL.toURI(URL.java:1056)
+	at org.eclipse.m2e.editor.lemminx.MavenRuntimeClasspathProvider.addJarsFromBundle(MavenRuntimeClasspathProvider.java:83)
+	at org.eclipse.m2e.editor.lemminx.MavenRuntimeClasspathProvider.get(MavenRuntimeClasspathProvider.java:68)
+	at org.eclipse.m2e.editor.lemminx.MavenRuntimeClasspathProvider.get(MavenRuntimeClasspathProvider.java:1)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.HashMap$EntrySpliterator.forEachRemaining(HashMap.java:1850)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ForEachOps$ForEachOp.evaluateSequential(ForEachOps.java:150)
+	at java.base/java.util.stream.ForEachOps$ForEachOp$OfRef.evaluateSequential(ForEachOps.java:173)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.forEach(ReferencePipeline.java:596)
+	at org.eclipse.wildwebdeveloper.xml.internal.XMLExtensionRegistry.getXMLLSClassPathExtensions(XMLExtensionRegistry.java:81)
+	at org.eclipse.wildwebdeveloper.xml.internal.XMLLanguageServer.getExtensionJarPaths(XMLLanguageServer.java:142)
+	at org.eclipse.wildwebdeveloper.xml.internal.XMLLanguageServer.<init>(XMLLanguageServer.java:83)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:204)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:920)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:246)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.lsp4e.LanguageServersRegistry$ExtensionLanguageServerDefinition.createConnectionProvider(LanguageServersRegistry.java:127)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$1(LanguageServerWrapper.java:222)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+
+!ENTRY org.testng.eclipse 1 0 2024-01-20 12:53:58.318
+!MESSAGE [TestNGLaunchConfigurationDelegate] Launching:
+  Classpath: C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\configuration\org.eclipse.osgi\947\0\.cp\lib\testng-remote.jar C:\advance_java_project\unit_testing_testng_parameter\bin C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.testng_7.4.0.r202105021533.jar C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\com.beust.jcommander_1.78.0.jar C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.apache-extras.beanshell.bsh_2.0.0.b6.jar C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.yaml.snakeyaml_1.21.0.jar C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.webjars.jquery_3.5.1.jar
+  VMArgs:    -ea
+  Class:     org.testng.remote.RemoteTestNG
+  Args:      -serport 53932 -protocol json -d C:\advance_java_project\unit_testing_testng_parameter\test-output C:\advance_java_project\unit_testing_testng_parameter\testng.xml
+java -ea -classpath C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\configuration\org.eclipse.osgi\947\0\.cp\lib\testng-remote.jar:C:\advance_java_project\unit_testing_testng_parameter\bin:C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.testng_7.4.0.r202105021533.jar:C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\com.beust.jcommander_1.78.0.jar:C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.apache-extras.beanshell.bsh_2.0.0.b6.jar:C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.yaml.snakeyaml_1.21.0.jar:C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.webjars.jquery_3.5.1.jar org.testng.remote.RemoteTestNG -serport 53932 -protocol json -d C:\advance_java_project\unit_testing_testng_parameter\test-output C:\advance_java_project\unit_testing_testng_parameter\testng.xml
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-01-20 13:01:30.262
+!MESSAGE org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+!STACK 0
+java.util.concurrent.ExecutionException: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:396)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2096)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$13(LanguageServerWrapper.java:425)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.exec(CompletableFuture.java:1796)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.handleResponse(RemoteEndpoint.java:209)
+	at org.eclipse.lsp4j.jsonrpc.RemoteEndpoint.consume(RemoteEndpoint.java:193)
+	at org.eclipse.lsp4e.LanguageServerWrapper.lambda$4(LanguageServerWrapper.java:260)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.handleMessage(StreamMessageProducer.java:194)
+	at org.eclipse.lsp4j.jsonrpc.json.StreamMessageProducer.listen(StreamMessageProducer.java:94)
+	at org.eclipse.lsp4j.jsonrpc.json.ConcurrentMessageProcessor.run(ConcurrentMessageProcessor.java:113)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+
+!ENTRY org.testng.eclipse 1 0 2024-01-20 13:06:12.714
+!MESSAGE [TestNGLaunchConfigurationDelegate] Launching:
+  Classpath: C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\configuration\org.eclipse.osgi\947\0\.cp\lib\testng-remote.jar C:\advance_java_project\unit_testing_testng_parameter\bin C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.testng_7.4.0.r202105021533.jar C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\com.beust.jcommander_1.78.0.jar C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.apache-extras.beanshell.bsh_2.0.0.b6.jar C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.yaml.snakeyaml_1.21.0.jar C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.webjars.jquery_3.5.1.jar
+  VMArgs:    -ea
+  Class:     org.testng.remote.RemoteTestNG
+  Args:      -serport 53961 -protocol json -d C:\advance_java_project\unit_testing_testng_parameter\test-output C:\Users\gonda\AppData\Local\Temp\testng-eclipse-1409184946\testng-customsuite.xml
+java -ea -classpath C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\configuration\org.eclipse.osgi\947\0\.cp\lib\testng-remote.jar:C:\advance_java_project\unit_testing_testng_parameter\bin:C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.testng_7.4.0.r202105021533.jar:C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\com.beust.jcommander_1.78.0.jar:C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.apache-extras.beanshell.bsh_2.0.0.b6.jar:C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.yaml.snakeyaml_1.21.0.jar:C:\Users\gonda\.eclipse\org.eclipse.platform_4.21.0_1709980481_win32_win32_x86_64\plugins\org.webjars.jquery_3.5.1.jar org.testng.remote.RemoteTestNG -serport 53961 -protocol json -d C:\advance_java_project\unit_testing_testng_parameter\test-output C:\Users\gonda\AppData\Local\Temp\testng-eclipse-1409184946\testng-customsuite.xml
