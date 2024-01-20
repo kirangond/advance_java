@@ -1,37 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-01-15T18:43:40 IST" name="Default suite" finished-at="2024-01-15T18:43:40 IST" duration-ms="59">
+  <suite started-at="2024-01-19T23:04:12 IST" name="Suite" finished-at="2024-01-19T23:04:12 IST" duration-ms="60">
     <groups>
     </groups>
-    <test started-at="2024-01-15T18:43:40 IST" name="Default test" finished-at="2024-01-15T18:43:40 IST" duration-ms="59">
+    <test started-at="2024-01-19T23:04:12 IST" name="Test" finished-at="2024-01-19T23:04:12 IST" duration-ms="60">
       <class name="com.testng.UnitTestingTestNG">
-        <test-method is-config="true" signature="before()[pri:0, instance:com.testng.UnitTestingTestNG@a3d8174]" started-at="2024-01-15T18:43:40 IST" name="before" finished-at="2024-01-15T18:43:40 IST" duration-ms="9" status="PASS">
+        <test-method is-config="true" signature="before()[pri:0, instance:com.testng.UnitTestingTestNG@732c2a62]" started-at="2024-01-19T23:04:12 IST" name="before" finished-at="2024-01-19T23:04:12 IST" duration-ms="8" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- before -->
-        <test-method is-config="true" signature="beforeClass()[pri:0, instance:com.testng.UnitTestingTestNG@a3d8174]" started-at="2024-01-15T18:43:40 IST" name="beforeClass" finished-at="2024-01-15T18:43:40 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:com.testng.UnitTestingTestNG@732c2a62]" started-at="2024-01-19T23:04:12 IST" name="beforeClass" finished-at="2024-01-19T23:04:12 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method signature="test1()[pri:0, instance:com.testng.UnitTestingTestNG@a3d8174]" started-at="2024-01-15T18:43:40 IST" name="test1" finished-at="2024-01-15T18:43:40 IST" duration-ms="6" status="PASS">
+        <test-method signature="test1()[pri:0, instance:com.testng.UnitTestingTestNG@732c2a62]" started-at="2024-01-19T23:04:12 IST" name="test1" finished-at="2024-01-19T23:04:12 IST" duration-ms="5" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test1 -->
-        <test-method signature="test2()[pri:0, instance:com.testng.UnitTestingTestNG@a3d8174]" started-at="2024-01-15T18:43:40 IST" name="test2" finished-at="2024-01-15T18:43:40 IST" duration-ms="1" status="PASS">
+        <test-method signature="test2()[pri:0, instance:com.testng.UnitTestingTestNG@732c2a62]" started-at="2024-01-19T23:04:12 IST" name="test2" finished-at="2024-01-19T23:04:12 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- test2 -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.testng.UnitTestingTestNG@a3d8174]" started-at="2024-01-15T18:43:40 IST" name="afterClass" finished-at="2024-01-15T18:43:40 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.testng.UnitTestingTestNG@732c2a62]" started-at="2024-01-19T23:04:12 IST" name="afterClass" finished-at="2024-01-19T23:04:12 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method is-config="true" signature="after()[pri:0, instance:com.testng.UnitTestingTestNG@a3d8174]" started-at="2024-01-15T18:43:40 IST" name="after" finished-at="2024-01-15T18:43:40 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="after()[pri:0, instance:com.testng.UnitTestingTestNG@732c2a62]" started-at="2024-01-19T23:04:12 IST" name="after" finished-at="2024-01-19T23:04:12 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- after -->
       </class> <!-- com.testng.UnitTestingTestNG -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      <class name="com.testng1.B">
+        <test-method signature="method()[pri:0, instance:com.testng1.B@2accdbb5]" started-at="2024-01-19T23:04:12 IST" name="method" finished-at="2024-01-19T23:04:12 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- method -->
+      </class> <!-- com.testng1.B -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>

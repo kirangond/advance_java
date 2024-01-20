@@ -2,6 +2,7 @@ package com.testng;
 
 
 
+
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
@@ -33,13 +34,13 @@ public class UnitTestingTestNG {
 		System.out.println("from test2 method");
 	}
 	
-	@BeforeClass 
+	@BeforeClass //it will run only once after the before test
 	public static void beforeClass()
 	{
 		System.out.println("beforeClass method(): ");
 	}
 	
-	@AfterClass 
+	@AfterClass //it will run only once before the aftertest
 	public static void afterClass()
 	{
 		System.out.println("afterClass method(): ");
